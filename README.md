@@ -14,7 +14,89 @@ endorsed by DCS Computing GmbH, the official producer of the LIGGGHTS® and CFDE
 > This offering is not approved or endorsed by OpenCFD Limited, producer and distributor of the OpenFOAM software via www.openfoam.com, and owner of the OPENFOAM®  and OpenCFD®  trade marks.
 
 ## installation
+Make sure OpenFOAM is set up correctly and LIGGGHTS is installed as well. Clone the 
+CFDEMcoupling source from the repository:
 
+```bash
+cd $HOME
+mkdir CFDEM
+cd CFDEM
+git clone https://github.com/ParticulateFlow/CFDEMcoupling.git
+```
+
+Open the bashrc file of CFDEMcoupling
+
+```bash
+gedit ~/CFDEM/CFDEMcoupling/etc/bashrc &
+```
+
+Edit the lines marked as `USER EDITABLE PART` to reflect your installation paths correctly. Save the bashrc file and reload it:
+
+```bash
+source ~/CFDEM/CFDEMcoupling/etc/bashrc
+```
+
+Entering $CFDEM_PROJECT_DIR in a the terminal should now give "... is a directory"
+
+Check if everything is set up correctly:
+
+```bash
+cfdemSysTest
+```
+
+Compile LIGGGHTS (as a library)
+
+```bash
+cfdemCompLIG
+```
+
+In case LIGGGHTS has already been compiled via cmake, it is possible to just compile LIGGGHTS-related sub-libraries using:
+```bash
+cfdemCompLIGlib
+```
+
+If the compilation fails with a message like
+
+```bash
+No rule to make target `/usr/lib/libpython2.7.so'
+```
+
+you probably need to create a symbolic link to the library in question.
+
+Compile CFDEMcoupling (library, solvers and utilities) in one go
+
+```bash
+cfdemCompCFDEM
+```
+
+or alternatively step by step
+
+```bash
+cfdemCompCFDEMsrc
+cfdemCompCFDEMsol
+cfdemCompCFDEMuti
+```
+
+Find the log files of the compile process
+
+```bash
+cd ~/CFDEM/CFDEMcoupling/etc/log
+ls
+```
+
+If the file *log_compile_results_success* is present, compilation was successful.
+
+Install Octave for post-processing some of the tutorial output.
+
+```bash
+sudo apt-get install octave
+```
+
+To run all tutorial cases type in a terminal:
+
+```bash
+cfdemTestTUT
+```
 
 ## License
 
