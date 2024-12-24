@@ -14,7 +14,7 @@ endorsed by DCS Computing GmbH, the official producer of the LIGGGHTS® and CFDE
 > This offering is not approved or endorsed by OpenCFD Limited, producer and distributor of the OpenFOAM software via www.openfoam.com, and owner of the OPENFOAM®  and OpenCFD®  trade marks.
 
 ## installation
-Make sure OpenFOAM is set up correctly and LIGGGHTS is installed as well. Clone the 
+Make sure OpenFOAM 6.0 is set up correctly and LIGGGHTS is installed as well. Clone the 
 CFDEMcoupling source from the repository:
 
 ```bash
