@@ -1,0 +1,39 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+probeModel off command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+probeModel off; :pre
+
+[Examples:]
+
+probeModel off; :pre
+
+NOTE: This examples list might not be complete - please check below for the list
+of models that can perform particle probing.
+
+[Description:]
+
+This model does not perform any probing.
+
+[Restrictions:]
+
+none
+
+[Related commands:]
+
+"particleProbe"_probeModel_particleProbe.html
+
+[Default:]
+
+none
+

@@ -1,0 +1,34 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+locateModel standard command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+locateModel standard;  :pre
+
+[Examples:]
+
+locateModel standard; :pre
+
+[Description:]
+
+The locateModel {standard} locates the CFD cell and cellID corresponding to a
+given position. A very straight-forward (robust!) locate algorithm is used.
+
+
+[Restrictions:]
+
+none
+
+[Related commands:]
+
+"locateModel"_locateModel.html
+

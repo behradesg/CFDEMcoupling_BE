@@ -1,0 +1,9 @@
+*.o
+*.d
+*.a
+*.dep
+log_*
+log.*
+*~
+
+lnInclude

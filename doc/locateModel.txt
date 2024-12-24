@@ -1,0 +1,39 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+locateModel command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+locateModel model; :pre
+
+model = name of the locateModel to be applied :ul
+
+[Examples:]
+
+locateModel engine; :pre
+
+NOTE: This examples list might not be complete - please look for other models
+(locateModel XY) in this documentation.
+
+[Description:]
+
+The locateModel is the base class for models which search for the CFD cell and
+cellID corresponding to a position. In general it is used to find the cell a
+particle is located in.
+
+[Restrictions:]
+
+none
+
+[Default:]
+
+none
+

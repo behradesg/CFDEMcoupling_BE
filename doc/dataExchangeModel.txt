@@ -1,0 +1,45 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+dataExchangeModel command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+dataExchangeModel model; :pre
+
+model = name of data exchange model to be applied :ul
+
+[Examples:]
+
+dataExchangeModel twoWayFiles;
+dataExchangeModel twoWayMPI; :pre
+
+NOTE: This examples list might not be complete - please look for other models
+(dataExchangeModel XY) in this documentation.
+
+[Description:]
+
+The data exchange model performs the data exchange between the DEM code and the
+CFD code.
+
+[Restrictions:]
+
+none
+
+[Related commands:]
+
+"noDataExchange"_dataExchangeModel_noDataExchange.html,
+"oneWayVTK"_dataExchangeModel_oneWayVTK.html,
+"twoWayFiles"_dataExchangeModel_twoWayFiles.html,
+"twoWayMPI"_dataExchangeModel_twoWayMPI.html
+
+[Default:]
+
+none

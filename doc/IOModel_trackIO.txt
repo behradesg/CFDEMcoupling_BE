@@ -1,0 +1,35 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+IOModel trackIO command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+IOModel trackIO; :pre
+
+[Examples:]
+
+IOModel trackIO; :pre
+
+[Description:]
+
+The {trackIO} model is based on the "sophIO"_IOModel_sophIO.html model and
+additionally writes fields necessary to use the particleTracks utility (which
+needs a particleTrackProperties file in the constant dir). The particleTracks
+utility generates tracks of the particles and writes them to a VTK file.
+
+[Restrictions:]
+
+none
+
+[Related commands:]
+
+"IOModel"_IOModel.html, "IOModel sophIO"_IOModel_sophIO.html
+

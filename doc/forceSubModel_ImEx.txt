@@ -1,0 +1,54 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+forceSubModel ImEx command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+sub-dictionary of the force model in use.
+
+forceSubModels
+(
+    ImEx;
+); :pre
+
+Optional for some force models:
+
+treatForceExplicit                 true;
+treatForceDEM                      true;
+implForceDEM                       true;
+verbose                            true;
+interpolation                      true;
+useFilteredDragModel               true;
+useParcelSizeDependentFilteredDrag true;
+implForceDEMaccumulated            true;
+scalarViscosity                    true; :pre
+
+[Examples:]
+
+forceSubModels
+(
+    ImEx;
+);
+treatForceExplicit true;  // optional for some force models. :pre
+
+[Description:]
+
+If no force sub-model is applied {ImEx} is used as default. If the keyword
+"forceSubModels" is provided, a choice of sub model is demanded. Depending on
+the force model different keywords are read and can therefore be set
+(see the log file). If the keyword is provided, its value is used.
+
+[Restrictions:]
+
+none
+
+[Related commands:]
+
+"forceSubModel"_forceSubModel.html
+

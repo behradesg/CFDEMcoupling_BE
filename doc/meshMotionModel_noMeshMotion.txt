@@ -1,0 +1,32 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+meshMotionModel noMeshMotion command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+meshMotionModel noMeshMotion; :pre
+
+[Examples:]
+
+meshMotionModel noMeshMotion; :pre
+
+[Description:]
+
+The {noMeshMotion} model is a dummy mesh motion model.
+
+[Restrictions:]
+
+none
+
+[Related commands:]
+
+"meshMotionModel"_meshMotionModel.html
+

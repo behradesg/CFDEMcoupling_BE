@@ -1,0 +1,38 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+voidFractionModel command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+voidFractionModel model; :pre
+
+model = name of the voidFractionModel to be applied :ul
+
+[Examples:]
+
+voidFractionModel centre; :pre
+
+NOTE: This examples list might not be complete - please look for other models
+(voidFractionModel XY) in this documentation.
+
+[Description:]
+
+The {voidFractionModel} is the base class for models to represent the DEM
+particle's volume in the CFD domain via a void fraction field.
+
+[Restrictions:]
+
+none
+
+[Default:]
+
+none
+

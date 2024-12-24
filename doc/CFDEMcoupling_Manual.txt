@@ -1,0 +1,93 @@
+"CFDEMproject Website"_lig :c
+
+:line
+CFDEMcoupling Documentation :h1,c
+<!-- HTML_ONLY -->
+Academic version :c
+<!-- END_HTML_ONLY -->
+
+<!-- RST
+
+|ProjectVersion|
+
+END_RST -->
+
+:line
+:c,image(Portfolio_CFDEMcoupling.png)
+:line
+
+<!-- HTML_ONLY -->
+NOTE:
+
+This is an academic adaptation of the CFDEMcoupling software package, released by
+the Department of Particulate Flow Modelling at "Johannes Kepler University
+Linz"_http://www.jku.at, Austria.
+This offering is not approved or endorsed by DCS Computing GmbH, the producer of
+the LIGGGHTS&reg; and CFDEM&reg;coupling software and owner of the LIGGGHTS
+and CFDEM&reg; trade marks.
+<!-- END_HTML_ONLY -->
+
+<!-- RST
+
+.. note::
+
+   This is an academic adaptation of the CFDEMcoupling software package, released
+   by the Department of Particulate Flow Modelling at `Johannes Kepler University
+   Linz <http://www.jku.at>`_, Austria.
+   This offering is not approved or endorsed by DCS Computing GmbH, the producer
+   of the LIGGGHTS\ |reg| and CFDEM\ |reg|\ coupling software and owner of the
+   LIGGGHTS and CFDEM\ |reg| trade marks.
+
+.. |reg|    unicode:: U+000AE .. REGISTERED SIGN
+
+END_RST -->
+
+<!-- HTML_ONLY -->
+1. Contents :h3
+<!-- END_HTML_ONLY -->
+
+The CFDEMcoupling documentation is organized into the following sections. If you
+find any errors or omissions in this manual or have suggestions for useful
+information to add, please send an email to the developers so the CFDEMcoupling
+documentation can be improved.
+
+<!-- HTML_ONLY -->
+"About CFDEMcoupling"_CFDEMcoupling_about.html :olb,l
+"Installation"_CFDEMcoupling_install.html :l
+"Tutorials"_CFDEMcoupling_tutorials.html :l
+"Dictionaries"_CFDEMcoupling_dicts.html :l
+  4.1 "couplingProperties dictionary"_CFDEMcoupling_dicts.html#couplingProperties :ulb,b
+  4.2 "liggghtsCommands dictionary"_CFDEMcoupling_dicts.html#liggghtsCommands :ule,b
+"Solvers"_CFDEMcoupling_solvers.html :l
+"Models"_CFDEMcoupling_models.html :l
+:ole
+<!-- END_HTML_ONLY -->
+
+<!-- RST
+
+.. toctree::
+   :maxdepth: 2
+   :numbered:
+   :caption: User Documentation
+   :name: userdoc
+   :includehidden:
+
+   CFDEMcoupling_about
+   CFDEMcoupling_install
+   CFDEMcoupling_tutorials
+   CFDEMcoupling_dicts
+   CFDEMcoupling_solvers
+   CFDEMcoupling_models
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`search`
+
+END_RST -->
+
+:link(of,http://www.openfoam.org)
+:link(lig,http://www.cfdem.com)
+
+

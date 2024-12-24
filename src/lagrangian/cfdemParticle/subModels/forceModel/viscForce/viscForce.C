@@ -1,0 +1,194 @@
+/*---------------------------------------------------------------------------*\
+    CFDEMcoupling - Open Source CFD-DEM coupling
+
+    CFDEMcoupling is part of the CFDEMproject
+    www.cfdem.com
+                                Christoph Goniva, christoph.goniva@cfdem.com
+                                Copyright 2009-2012 JKU Linz
+                                Copyright 2012-     DCS Computing GmbH, Linz
+-------------------------------------------------------------------------------
+License
+    This file is part of CFDEMcoupling.
+
+    CFDEMcoupling is free software; you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by the
+    Free Software Foundation; either version 3 of the License, or (at your
+    option) any later version.
+
+    CFDEMcoupling is distributed in the hope that it will be useful, but WITHOUT
+    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+    for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with CFDEMcoupling; if not, write to the Free Software Foundation,
+    Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Description
+    This code is designed to realize coupled CFD-DEM simulations using LIGGGHTS
+    and OpenFOAM(R). Note: this code is not part of OpenFOAM(R) (see DISCLAIMER).
+\*---------------------------------------------------------------------------*/
+
+#include "error.H"
+
+#include "viscForce.H"
+#include "addToRunTimeSelectionTable.H"
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+namespace Foam
+{
+
+// * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //
+
+defineTypeNameAndDebug(viscForce, 0);
+
+addToRunTimeSelectionTable
+(
+    forceModel,
+    viscForce,
+    dictionary
+);
+
+
+// * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
+
+// Construct from components
+viscForce::viscForce
+(
+    const dictionary& dict,
+    cfdemCloud& sm
+)
+:
+    forceModel(dict,sm),
+    propsDict_(dict.subDict(typeName + "Props")),
+    velocityFieldName_(propsDict_.lookup("velocityFieldName")),
+    U_(sm.mesh().lookupObject<volVectorField> (velocityFieldName_)),
+    addedMassCoeff_(0.0)
+{
+
+    // init force sub model
+    setForceSubModels(propsDict_);
+
+    // define switches which can be read from dict
+    forceSubM(0).setSwitchesList(SW_TREAT_FORCE_EXPLICIT,true); // activate treatExplicit switch
+    forceSubM(0).setSwitchesList(SW_TREAT_FORCE_DEM,true); // activate treatForceDEM switch
+    forceSubM(0).setSwitchesList(SW_INTERPOLATION,true); // activate search for interpolate switch
+    forceSubM(0).setSwitchesList(SW_SCALAR_VISCOSITY,true); // activate scalarViscosity switch
+
+    // read those switches defined above, if provided in dict
+    forceSubM(0).readSwitches();
+
+    if (modelType_ == "B")
+    {
+        FatalError <<"using  model viscForce with model type B is not valid\n" << abort(FatalError);
+    }else if (modelType_ == "Bfull")
+    {
+        if(forceSubM(0).switches()[SW_TREAT_FORCE_DEM])
+        {
+            Info << "Using treatForceDEM false!" << endl;
+            forceSubM(0).setSwitches(SW_TREAT_FORCE_DEM,false); // treatForceDEM = false
+        }
+
+    }else // modelType_=="A"
+    {
+        if(!forceSubM(0).switches()[SW_TREAT_FORCE_DEM])
+        {
+            Info << "Using treatForceDEM true!" << endl;
+            forceSubM(0).setSwitches(SW_TREAT_FORCE_DEM,true); // treatForceDEM = true
+        }
+    }
+
+    if (propsDict_.found("useAddedMass"))
+    {
+        addedMassCoeff_ =  readScalar(propsDict_.lookup("useAddedMass"));
+        Info << "viscForce will also include added mass with coefficient: " << addedMassCoeff_ << endl;
+        Info << "WARNING: use fix nve/sphere/addedMass in LIGGGHTS input script to correctly account for added mass effects!" << endl;
+    }
+
+    particleCloud_.checkCG(true);
+
+    //Append the field names to be probed
+    particleCloud_.probeM().initialize(typeName, typeName+".logDat");
+    particleCloud_.probeM().vectorFields_.append("viscForce"); //first entry must the be the force
+    particleCloud_.probeM().scalarFields_.append("Vs");
+    particleCloud_.probeM().writeHeader();
+}
+
+
+// * * * * * * * * * * * * * * * * Destructor  * * * * * * * * * * * * * * * //
+
+viscForce::~viscForce()
+{}
+
+
+// * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
+
+void viscForce::setForce() const
+{
+    const volVectorField& divTauField = forceSubM(0).divTauField(U_);
+
+    vector divTau;
+    scalar Vs;
+    vector position;
+    vector force;
+    label cellI;
+
+    interpolationCellPoint<vector> divTauInterpolator_(divTauField);
+
+    #include "setupProbeModel.H"
+
+    for(int index = 0;index <  particleCloud_.numberOfParticles(); index++)
+    {
+        //if(mask[index][0])
+        //{
+            force = vector::zero;
+            cellI = particleCloud_.cellIDs()[index][0];
+
+            if (cellI > -1) // particle Found
+            {
+
+                position = particleCloud_.position(index);
+
+                if(forceSubM(0).interpolation()) // use intepolated values for alpha (normally off!!!)
+                {
+                    divTau = divTauInterpolator_.interpolate(position,cellI);
+                }else
+                {
+                    divTau = divTauField[cellI];
+                }
+
+                Vs = particleCloud_.particleVolume(index);
+
+                // calc the contribution of the deviatoric stress
+                // to the generalized buoyancy force
+                force = -Vs*divTau*(1.0+addedMassCoeff_);
+
+                if(forceSubM(0).verbose() && index >0 && index <2)
+                {
+                    Info << "index = " << index << endl;
+                    Info << "gradP = " << divTau << endl;
+                    Info << "force = " << force << endl;
+                }
+
+                //Set value fields and write the probe
+                if(probeIt_)
+                {
+                    #include "setupProbeModelfields.H"
+                    vValues.append(force);  //first entry must the be the force
+                    sValues.append(Vs);
+                    particleCloud_.probeM().writeProbe(index, sValues, vValues);
+                }
+            }
+
+            // write particle based data to global array
+            forceSubM(0).partToArray(index,force,vector::zero);
+        //}
+    }
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+} // End namespace Foam
+
+// ************************************************************************* //

@@ -1,0 +1,230 @@
+cfdemCloud = cfdemCloud
+cfdTools = cfdTools
+recModels = subModels/recModel
+energyModels = subModels/energyModel
+massTransferModels = subModels/massTransferModel
+forceModels = subModels/forceModel
+forceSubModels = subModels/forceModel/forceSubModels
+forceModelsMS = subModels/forceModelMS
+thermCondModels = subModels/thermCondModel
+diffCoeffModels = subModels/diffCoeffModel
+chemistryModels = subModels/chemistryModel
+IOModels = subModels/IOModel
+voidFractionModels = subModels/voidFractionModel
+locateModels = subModels/locateModel
+meshMotionModels = subModels/meshMotionModel
+momCoupleModels = subModels/momCoupleModel
+regionModels = subModels/regionModel
+dataExchangeModels = subModels/dataExchangeModel
+averagingModels = subModels/averagingModel
+clockModels = subModels/clockModel
+liggghtsCommandModels = subModels/liggghtsCommandModel
+smoothingModels = subModels/smoothingModel
+probeModels = subModels/probeModel
+otherForceModels = subModels/otherForceModel
+
+$(cfdemCloud)/cfdemCloud.C
+$(cfdemCloud)/cfdemCloudIO.C
+derived/cfdemCloudIB/cfdemCloudIB.C
+derived/cfdemCloudMS/cfdemCloudMS.C
+derived/cfdemCloudEnergy/cfdemCloudEnergy.C
+
+$(cfdTools)/global.C
+$(cfdTools)/newGlobal.C
+
+$(chemistryModels)/chemistryModel/chemistryModel.C
+$(chemistryModels)/chemistryModel/newChemistryModel.C
+$(chemistryModels)/species/species.C
+$(chemistryModels)/noChemistry/noChemistry.C
+$(chemistryModels)/diffusionCoefficients/diffusionCoefficients.C
+$(chemistryModels)/massTransferCoeff/massTransferCoeff.C
+$(chemistryModels)/reactantPerParticle/reactantPerParticle.C
+$(chemistryModels)/initMultiLayers/initMultiLayers.C
+
+$(energyModels)/energyModel/energyModel.C
+$(energyModels)/energyModel/newEnergyModel.C
+$(energyModels)/heatTransferGunn/heatTransferGunn.C
+$(energyModels)/heatTransferRanzMarshall/heatTransferRanzMarshall.C
+$(energyModels)/heatTransferInterGrain/heatTransferInterGrain.C
+$(energyModels)/wallHeatTransferYagi/wallHeatTransferYagi.C
+$(energyModels)/reactionHeat/reactionHeat.C
+
+$(massTransferModels)/massTransferModel/massTransferModel.C
+$(massTransferModels)/massTransferModel/newMassTransferModel.C
+$(massTransferModels)/massTransferGunn/massTransferGunn.C
+
+$(thermCondModels)/thermCondModel/thermCondModel.C
+$(thermCondModels)/thermCondModel/newThermCondModel.C
+$(thermCondModels)/SyamlalThermCond/SyamlalThermCond.C
+$(thermCondModels)/ZehnerSchluenderThermCond/ZehnerSchluenderThermCond.C
+$(thermCondModels)/noTherm/noThermCond.C
+
+$(diffCoeffModels)/diffCoeffModel/diffCoeffModel.C
+$(diffCoeffModels)/diffCoeffModel/newDiffCoeffModel.C
+$(diffCoeffModels)/SyamlalDiffCoeff/SyamlalDiffCoeff.C
+$(diffCoeffModels)/noDiff/noDiffCoeff.C
+
+$(forceModels)/forceModel/forceModel.C
+$(forceModels)/forceModel/newForceModel.C
+$(forceModels)/noDrag/noDrag.C
+$(forceModels)/checkCouplingInterval/checkCouplingInterval.C
+$(forceModels)/DiFeliceDrag/DiFeliceDrag.C
+$(forceModels)/fieldStore/fieldStore.C
+$(forceModels)/GidaspowDrag/GidaspowDrag.C
+$(forceModels)/GobinDragFace/GobinDragFace.C
+$(forceModels)/SchillerNaumannDrag/SchillerNaumannDrag.C
+$(forceModels)/Archimedes/Archimedes.C
+$(forceModels)/ArchimedesIB/ArchimedesIB.C
+$(forceModels)/interface/interface.C
+$(forceModels)/ShirgaonkarIB/ShirgaonkarIB.C
+$(forceModels)/KochHillDrag/KochHillDrag.C
+$(forceModels)/KochHillRWDrag/KochHillRWDrag.C
+$(forceModels)/LaEuScalarTemp/LaEuScalarTemp.C
+$(forceModels)/virtualMassForce/virtualMassForce.C
+$(forceModels)/ParmarBassetForce/ParmarBassetForce.C
+$(forceModels)/gradPForce/gradPForce.C
+$(forceModels)/viscForce/viscForce.C
+$(forceModels)/MeiLift/MeiLift.C
+$(forceModels)/particleCellVolume/particleCellVolume.C
+$(forceModels)/fieldTimeAverage/fieldTimeAverage.C
+$(forceModels)/volWeightedAverage/volWeightedAverage.C
+$(forceModels)/deactivateForce/deactivateForce.C
+$(forceModels)/freeStreaming/freeStreaming.C
+$(forceModels)/isotropicFluctuations/isotropicFluctuations.C
+$(forceModels)/evaluateFluctuations/evaluateFluctuations.C
+$(forceModels)/directedDiffusiveRelaxation/directedDiffusiveRelaxation.C
+$(forceModels)/potentialRelaxation/potentialRelaxation.C
+$(forceModels)/BeetstraDrag/BeetstraDrag.C
+$(forceModels)/BeetstraDragFace/BeetstraDragFace.C
+$(forceModels)/BeetstraDragPoly/BeetstraDragPoly.C
+$(forceModels)/dSauter/dSauter.C
+$(forceModels)/transferFluidProperties/transferFluidProperties.C
+$(forceModels)/Fines/Fines.C
+$(forceModels)/Fines/FinesFields.C
+$(forceModels)/Fines/FanningDynFines.C
+$(forceModels)/Fines/ErgunStatFines.C
+$(forceModels)/granKineticEnergy/granKineticEnergy.C
+$(forceModels)/pdCorrelation/pdCorrelation.C
+$(forceModels)/surfaceTensionForce/surfaceTensionForce.C
+$(forceModels)/gradPForceSmooth/gradPForceSmooth.C
+$(forceModels)/particleDeformation/particleDeformation.C
+$(forceModels)/turbulentDispersion/turbulentDispersion.C
+$(forceModels)/terminalVelocity/terminalVelocity.C
+$(forceModels)/turbulentVelocityFluctuations/turbulentVelocityFluctuations.C
+$(forceModels)/staticPressure/staticPressure.C
+$(forceModels)/TangDrag/TangDrag.C
+$(forceModels)/TangDragFace/TangDragFace.C
+$(forceModels)/VanWachemDrag/VanWachemDrag.C
+$(forceModels)/VanWachemDragFace/VanWachemDragFace.C
+$(forceModels)/WenYuDrag/WenYuDrag.C
+$(forceModels)/WenYuDragFace/WenYuDragFace.C
+$(forceModels)/granularTemperature/granularTemperature.C
+$(forceModels)/totalParticleFluctuatingEnergy/totalParticleFluctuatingEnergy.C
+$(forceModels)/cellBasedGranularTemperature/cellBasedGranularTemperature.C
+
+$(forceModelsMS)/forceModelMS/forceModelMS.C
+$(forceModelsMS)/forceModelMS/newForceModelMS.C
+$(forceModelsMS)/DiFeliceDragMS/DiFeliceDragMS.C
+
+$(forceSubModels)/forceSubModel/newForceSubModel.C
+$(forceSubModels)/forceSubModel/forceSubModel.C
+$(forceSubModels)/ImEx/ImEx.C
+$(forceSubModels)/ScaleForce/ScaleForce.C
+$(forceSubModels)/scaleForceBoundary/scaleForceBoundary.C
+
+$(otherForceModels)/otherForceModel/otherForceModel.C
+$(otherForceModels)/otherForceModel/newOtherForceModel.C
+$(otherForceModels)/gravity/gravity.C
+$(otherForceModels)/weightSecondaryPhase/weightSecondaryPhase.C
+$(otherForceModels)/expParticleForces/expParticleForces.C
+$(otherForceModels)/secondaryPhaseInducedBuoyancy/secondaryPhaseInducedBuoyancy.C
+$(otherForceModels)/gravityEff/gravityEff.C
+
+$(probeModels)/probeModel/probeModel.C
+$(probeModels)/probeModel/newProbeModel.C
+$(probeModels)/noProbe/noProbe.C
+$(probeModels)/particleProbe/particleProbe.C
+
+$(IOModels)/IOModel/IOModel.C
+$(IOModels)/IOModel/newIOModel.C
+$(IOModels)/noIO/noIO.C
+$(IOModels)/basicIO/basicIO.C
+$(IOModels)/trackIO/trackIO.C
+$(IOModels)/sophIO/sophIO.C
+
+$(voidFractionModels)/voidFractionModel/voidFractionModel.C
+$(voidFractionModels)/voidFractionModel/newVoidFractionModel.C
+$(voidFractionModels)/centreVoidFraction/centreVoidFraction.C
+$(voidFractionModels)/dividedVoidFraction/dividedVoidFraction.C
+$(voidFractionModels)/dividedVoidFractionMS/dividedVoidFractionMS.C
+$(voidFractionModels)/bigParticleVoidFraction/bigParticleVoidFraction.C
+$(voidFractionModels)/GaussVoidFraction/GaussVoidFraction.C
+$(voidFractionModels)/GaussVoidFractionUR/GaussVoidFractionUR.C
+$(voidFractionModels)/GaussVoidFractionURface/GaussVoidFractionURface.C
+$(voidFractionModels)/inverseDistanceVoidFractionFace/inverseDistanceVoidFractionFace.C
+$(voidFractionModels)/IBVoidFraction/IBVoidFraction.C
+$(voidFractionModels)/noVoidFraction/noVoidFraction.C
+$(voidFractionModels)/trilinearVoidFraction/trilinearVoidFraction.C
+
+$(locateModels)/locateModel/locateModel.C
+$(locateModels)/locateModel/newLocateModel.C
+$(locateModels)/standardSearch/standardSearch.C
+$(locateModels)/engineSearch/engineSearch.C
+$(locateModels)/turboEngineSearch/turboEngineSearch.C
+$(locateModels)/engineSearchMany2Many/engineSearchMany2Many.C
+$(locateModels)/engineSearchIB/engineSearchIB.C
+
+$(meshMotionModels)/meshMotionModel/meshMotionModel.C
+$(meshMotionModels)/meshMotionModel/newMeshMotionModel.C
+$(meshMotionModels)/noMeshMotion/noMeshMotion.C
+
+$(momCoupleModels)/momCoupleModel/momCoupleModel.C
+$(momCoupleModels)/momCoupleModel/newMomCoupleModel.C
+$(momCoupleModels)/explicitCouple/explicitCouple.C
+$(momCoupleModels)/implicitCouple/implicitCouple.C
+$(momCoupleModels)/noCouple/noCouple.C
+$(momCoupleModels)/deactivateCouple/deactivateCouple.C
+
+$(regionModels)/regionModel/regionModel.C
+$(regionModels)/regionModel/newRegionModel.C
+$(regionModels)/allRegion/allRegion.C
+
+$(dataExchangeModels)/dataExchangeModel/dataExchangeModel.C
+$(dataExchangeModels)/dataExchangeModel/newDataExchangeModel.C
+$(dataExchangeModels)/oneWayVTK/oneWayVTK.C
+$(dataExchangeModels)/twoWayFiles/twoWayFiles.C
+$(dataExchangeModels)/noDataExchange/noDataExchange.C
+$(dataExchangeModels)/twoWayMPI/twoWayMPI.C
+$(dataExchangeModels)/twoWayOne2One/twoWayOne2One.C
+$(dataExchangeModels)/twoWayOne2One/one2one.C
+
+$(averagingModels)/averagingModel/averagingModel.C
+$(averagingModels)/averagingModel/newAveragingModel.C
+$(averagingModels)/dilute/dilute.C
+$(averagingModels)/dense/dense.C
+$(averagingModels)/denseFace/denseFace.C
+$(averagingModels)/noAveraging/noAveraging.C
+
+$(clockModels)/clockModel/clockModel.C
+$(clockModels)/clockModel/newClockModel.C
+$(clockModels)/standardClock/standardClock.C
+$(clockModels)/noClock/noClock.C
+
+$(liggghtsCommandModels)/liggghtsCommandModel/liggghtsCommandModel.C
+$(liggghtsCommandModels)/liggghtsCommandModel/newLiggghtsCommandModel.C
+$(liggghtsCommandModels)/execute/execute.C
+$(liggghtsCommandModels)/runLiggghts/runLiggghts.C
+$(liggghtsCommandModels)/writeLiggghts/writeLiggghts.C
+$(liggghtsCommandModels)/readLiggghtsData/readLiggghtsData.C
+
+$(smoothingModels)/smoothingModel/smoothingModel.C
+$(smoothingModels)/smoothingModel/newSmoothingModel.C
+$(smoothingModels)/noSmoothing/noSmoothing.C
+$(smoothingModels)/constDiffSmoothing/constDiffSmoothing.C
+$(smoothingModels)/constDiffSmoothingF/constDiffSmoothingF.C
+$(smoothingModels)/temporalSmoothing/temporalSmoothing.C
+$(smoothingModels)/constDiffAndTemporalSmoothing/constDiffAndTemporalSmoothing.C
+$(smoothingModels)/laplaceFilterSmoothing/laplaceFilterSmoothing.C
+$(smoothingModels)/simpleFilterSmoothing/simpleFilterSmoothing.C
+
+LIB = $(CFDEM_LIB_DIR)/lib$(CFDEM_LIB_NAME)

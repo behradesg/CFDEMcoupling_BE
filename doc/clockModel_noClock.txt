@@ -1,0 +1,33 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+clockModel off command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+clockModel off; :pre
+
+[Examples:]
+
+clockModel off; :pre
+
+[Description:]
+
+The {off} model is a dummy clockModel model which does not measure/evaluate the
+run time.
+
+[Restrictions:]
+
+none
+
+[Related commands:]
+
+"clockModel"_clockModel.html
+

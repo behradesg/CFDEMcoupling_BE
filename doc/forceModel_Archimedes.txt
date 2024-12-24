@@ -1,0 +1,56 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+forceModel Archimedes command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+forceModels
+(
+    Archimedes
+);
+ArchimedesProps
+\{
+    gravityFieldName   "gravity";
+    treatForceExplicit switch1;
+    treatForceDEM      switch2;
+\} :pre
+
+{gravity} = name of the finite volume gravity field :ulb,l
+{switch1} = (optional, default false) sub model switch, see "forceSubModel"_forceSubModel.html for details :l
+{switch2} = (optional, default false) sub model switch, see "forceSubModel"_forceSubModel.html for details :l
+:ule
+
+[Examples:]
+
+forceModels
+(
+    Archimedes
+);
+ArchimedesProps
+\{
+    gravityFieldName "g";
+\} :pre
+
+[Description:]
+
+The force model performs the calculation of forces (e.g. fluid-particle
+interaction forces) acting on each DEM particle. The {Archimedes} model is a
+model that calculates the Archimedes' volumetric lift force stemming from
+density difference of fluid and particle.
+
+[Restrictions:]
+
+none
+
+[Related commands:]
+
+"forceModel"_forceModel.html
+

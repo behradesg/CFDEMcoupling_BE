@@ -1,0 +1,197 @@
+/*---------------------------------------------------------------------------*\
+    CFDEMcoupling - Open Source CFD-DEM coupling
+
+    CFDEMcoupling is part of the CFDEMproject
+    www.cfdem.com
+                                Christoph Goniva, christoph.goniva@cfdem.com
+                                Copyright 2009-2012 JKU Linz
+                                Copyright 2012-     DCS Computing GmbH, Linz
+-------------------------------------------------------------------------------
+License
+    This file is part of CFDEMcoupling.
+
+    CFDEMcoupling is free software; you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by the
+    Free Software Foundation; either version 3 of the License, or (at your
+    option) any later version.
+
+    CFDEMcoupling is distributed in the hope that it will be useful, but WITHOUT
+    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+    for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with CFDEMcoupling; if not, write to the Free Software Foundation,
+    Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Description
+    This code is designed to realize coupled CFD-DEM simulations using LIGGGHTS
+    and OpenFOAM(R). Note: this code is not part of OpenFOAM(R) (see DISCLAIMER).
+
+    Gaussian distributed particle voidfraction model
+    contribution from RQ
+
+Class
+    voidFractionModel
+
+SourceFiles
+    voidFractionModel.C
+
+\*---------------------------------------------------------------------------*/
+
+#ifndef voidFractionModel_H
+#define voidFractionModel_H
+
+#include "fvCFD.H"
+#include "cfdemCloud.H"
+#include "zeroGradientFvPatchField.H"
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+namespace Foam
+{
+
+/*---------------------------------------------------------------------------*\
+                           Class voidFractionModel Declaration
+\*---------------------------------------------------------------------------*/
+
+class voidFractionModel
+{
+
+protected:
+
+    // Protected data
+        const dictionary& dict_;
+
+        cfdemCloud& particleCloud_;
+
+        bool multiWeights_;
+
+        volScalarField voidfractionPrev_;
+
+        volScalarField voidfractionNext_;
+
+        const word partCellsRegName_;
+
+        int maxCellsPerParticle_;
+
+        scalar weight_;
+
+        scalar porosity_;
+
+    // Protected member functions
+
+public:
+
+    //- Runtime type information
+    TypeName("voidFractionModel");
+
+    // Declare runtime constructor selection table
+
+        declareRunTimeSelectionTable
+        (
+            autoPtr,
+            voidFractionModel,
+            dictionary,
+            (
+                const dictionary& dict,
+                cfdemCloud& sm
+            ),
+            (dict,sm)
+        );
+
+
+    // Constructors
+
+        //- Construct from components
+        voidFractionModel
+        (
+            const dictionary& dict,
+            cfdemCloud& sm
+        );
+
+        //- Construct from components, specifiy initial value of fields
+        voidFractionModel
+        (
+            const dictionary& dict,
+            cfdemCloud& sm,
+            const scalar initVoidfraction
+        );
+
+
+    // Destructor
+
+        virtual ~voidFractionModel();
+
+
+    // Selector
+
+        static autoPtr<voidFractionModel> New
+        (
+            const dictionary& dict,
+            cfdemCloud& sm
+        );
+
+
+    // public member functions
+        virtual void setvoidFraction(double** const&,double**&,double**&,double**&,double**&) = 0;
+
+        tmp<volScalarField> voidFractionInterp() const;
+
+        volScalarField& voidFractionPrev() { return voidfractionPrev_; }
+        const volScalarField& voidFractionPrev() const { return voidfractionPrev_; }
+
+        volScalarField& voidFractionNext() {
+            voidfractionNext_.correctBoundaryConditions();
+            return voidfractionNext_;
+        }
+        const volScalarField& voidFractionNext() const { return voidfractionNext_; }
+
+        scalar weight() const { return weight_; }
+
+        scalar weight(label index) const
+        {
+            return particleCloud_.particleEffVolFactor(index);
+        }
+
+        scalar porosity() const { return porosity_; }
+
+        void checkWeightNporosity(dictionary& propsDict)
+        {
+            if (propsDict.found("weight")) weight_ = readScalar(propsDict.lookup("weight"));
+            if (propsDict.found("porosity")) porosity_ = readScalar(propsDict.lookup("porosity"));
+        }
+
+        void resetVoidFractions();
+
+        //void undoVoidFractions(double**const&) const;
+
+        int** const& cellsPerParticle() const;
+
+        int maxCellsPerParticle() const;
+
+        virtual void setParticleType(label type) const {}
+
+        virtual bool checkParticleType(label) const { return true; } //consider all particles by default
+
+        virtual scalar minPeriodicDistance
+        (
+            int index,
+            const vector& cellCentrePosition,
+            const vector& positionCenter,
+            const boundBox& globalBb,
+            vector& minPeriodicPos
+        ) const;
+
+        virtual scalar pointInParticle(int index, const vector& positionCenter, const vector& point, double scale=1.0) const;
+};
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+} // End namespace Foam
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+#endif
+
+// ************************************************************************* //

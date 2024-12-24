@@ -1,0 +1,38 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+meshMotionModel command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+meshMotionModel model; :pre
+
+model = name of the meshMotionModel to be applied :ul
+
+[Examples:]
+
+meshMotionModel noMeshMotion; :pre
+
+NOTE: This examples list might not be complete - please look for other models
+(meshMotionModel XY) in this documentation.
+
+[Description:]
+
+The {meshMotionModel} is the base class for models which manipulate the CFD mesh
+according to the DEM mesh motion.
+
+[Restrictions:]
+
+none
+
+[Default:]
+
+none
+

@@ -1,0 +1,63 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+forceModel viscForce command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+forceModels
+(
+    viscForce;
+);
+viscForceProps
+\{
+    velocityFieldName  "U";
+    useAddedMass       scalar1;
+    treatForceExplicit switch1;
+    treatForceDEM      switch2;
+    interpolation      switch3;
+    scalarViscosity    switch4;
+\} :pre
+
+{U} = name of the finite volume fluid velocity field :ulb,l
+{scalar1} = (optional, default 0) coefficient of added mass accounted for :l
+{switch1} = (optional, default false) sub model switch, see "forceSubModel"_forceSubModel.html for details :l
+{switch2} = (optional, default false) sub model switch, see "forceSubModel"_forceSubModel.html for details :l
+{switch3} = (optional, default false) flag to use interpolated stress values :l
+{switch4} =  (optional, default false) sub model switch, see "forceSubModel"_forceSubModel.html for details :l
+:ule
+
+[Examples:]
+
+forceModels
+(
+    viscForce;
+);
+viscForceProps
+\{
+    velocityFieldName "U";
+\} :pre
+
+[Description:]
+
+The force model performs the calculation of forces (e.g. fluid-particle
+interaction forces) acting on each DEM particle. The {viscForce} model
+calculates the particle based viscous force, -(grad(tau)) * Vparticle
+(see Zhou et al. (2010): "Discrete particle simulation of particle-fluid flow:
+model formulations and their applicability", J. Fluid Mech.).
+
+[Restrictions:]
+
+none
+
+[Related commands:]
+
+"forceModel"_forceModel.html
+

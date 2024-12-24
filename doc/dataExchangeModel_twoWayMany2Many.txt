@@ -1,0 +1,48 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+dataExchangeModel twoWayMany2Many command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+dataExchangeModel twoWayMany2Many;
+twoWayMany2ManyProps
+\{
+    liggghtsPath "path";
+\} :pre
+
+{path} = path to the DEM simulation input file :ulb,l
+:ule
+
+[Examples:]
+
+dataExchangeModel twoWayMany2Many;
+twoWayMany2ManyProps
+\{
+    liggghtsPath "../DEM/in.liggghts_init";
+\} :pre
+
+[Description:]
+
+The data exchange model performs the data exchange between the DEM code and the
+CFD code. The {twoWayMany2Many} model is a model that can exchange particle
+properties from DEM to CFD and from CFD to DEM. Data is exchanged via MPI
+technique using the many to many mapping scheme. The DEM run is executed by the
+coupling model, via a {liggghtsCommandModel} object.
+
+[Restrictions:]
+
+Must be used in combination with the
+"engineSearchMany2Many"_locateModel_engineSearchMany2Many.html locate model!
+
+[Related commands:]
+
+"dataExchangeModel"_dataExchangeModel.html
+

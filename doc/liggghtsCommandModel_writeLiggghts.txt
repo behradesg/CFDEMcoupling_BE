@@ -1,0 +1,58 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+liggghtsCommandModel writeLiggghts command :h3
+
+[Syntax:]
+
+Defined in "liggghtsCommmands"_CFDEMcoupling_dicts.html#liggghtsCommands
+dictionary.
+
+liggghtsCommandModels
+(
+   writeLiggghts
+);
+//- optional
+writeLiggghtsProps
+\{
+    writeLast switch1;
+    path      "path";
+    writeName "name";
+    overwrite switch2;
+    verbose;
+\} :pre
+
+{switch1} = (optional, default on) select if only last step is stored or every write step :ulb,l
+{path} = (optional, default "../DEM") alternative path (relative to execution directory) for saving the restart file :l
+{name} = (optional, default "liggghts.restartCFDEM") name of the restart file to be written in ../DEM/ :l
+{switch2} = (optional, default off) select if only one restart file $name or multiple files $name_$timeStamp are written :l
+{verbose} = (optional, default off) for verbose run :l
+:ule
+
+[Examples:]
+
+liggghtsCommandModels
+(
+   runLiggghts
+   writeLiggghts
+); :pre
+
+[Description:]
+
+The LIGGGHTS command models can be used to execute a LIGGGHTS command during a
+CFD write. The {writeLiggghts} command executes the command
+"write_restart $name" - where $name is the name of the restart file - every
+write step.
+
+[Restrictions:]
+
+none
+
+[Related commands:]
+
+"liggghtsCommandModel"_liggghtsCommandModel.html
+

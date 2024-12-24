@@ -1,0 +1,44 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+averagingModel command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+averagingModel model; :pre
+
+model = name of averaging model to be applied :ul
+
+[Examples:]
+
+averagingModel dense;
+averagingModel dilute; :pre
+
+NOTE:
+This examples list might not be complete - please look for other averaging
+models in this documentation.
+
+[Description:]
+
+The averaging model performs the Lagrangian->Eulerian mapping of data (e.g.
+particle velocities).
+
+[Restrictions:]
+
+none
+
+[Related commands:]
+
+"dense"_averagingModel_dense.html, "dilute"_averagingModel_dilute.html
+
+[Default:]
+
+none
+

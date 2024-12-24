@@ -1,0 +1,46 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+liggghtsCommandModels command :h3
+
+[Syntax:]
+
+Defined in "liggghtsCommmands"_CFDEMcoupling_dicts.html#liggghtsCommands
+dictionary.
+
+liggghtsCommandModels
+(
+    model_x
+    model_y
+); :pre
+
+model = name of the liggghtsCommandModel to be applied :ul
+
+[Examples:]
+
+liggghtsCommandModels
+(
+   runLiggghts
+   writeLiggghts
+); :pre
+
+NOTE: This examples list might not be complete - please look for other models
+(liggghtsCommandModel XY) in this documentation.
+
+[Description:]
+
+The liggghtsCommandModel is the base class to execute DEM commands within a CFD
+run.
+
+[Restrictions:]
+
+Works only with MPI coupling.
+
+[Default:]
+
+none
+

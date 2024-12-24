@@ -1,0 +1,39 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+clockModel command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+clockModel model; :pre
+
+model = name of the clockModel to be applied :ul
+
+[Examples:]
+
+clockModel standardClock; :pre
+
+NOTE: This examples list might not be complete - please look for other clock
+models in this documentation.
+
+[Description:]
+
+The clockModel is the base class for models to examine the code/algorithm with
+respect to run time.
+
+Main parts of the clockModel classes were written by Josef Kerbl, JKU.
+
+[Restrictions:]
+
+none
+
+[Default:]
+
+none

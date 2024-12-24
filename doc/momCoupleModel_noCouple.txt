@@ -1,0 +1,40 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+momCoupleModel off command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+momCoupleModels
+(
+    off
+); :pre
+
+
+[Examples:]
+
+momCoupleModels
+(
+    off
+); :pre
+
+[Description:]
+
+The {off} model is a dummy momCoupleModel model providing a no momentum source
+term for the CFD solver.
+
+[Restrictions:]
+
+Only for solvers that include no momentum exchange, e.g. immersed boundary.
+
+[Related commands:]
+
+"momCoupleModel"_momCoupleModel.html
+

@@ -1,0 +1,71 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+forceModel ShirgaonkarIB command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+forceModels
+(
+    ShirgaonkarIB
+);
+ShirgaonkarIBProps
+\{
+    velFieldName      "U";
+    pressureFieldName "pressure";
+    twoDimensional;
+    useTorque;
+    treatForceExplicit switch1;
+\} :pre
+
+{U} = name of the finite volume fluid velocity field :ulb,l
+{pressure} = name of the finite volume pressure field :l
+{twoDimensional} = optional keyword for conducting a two dimensional calculation :l
+{useTorque} =  optional keyword for calculating particle torque :l
+{switch1} = (optional, default false) sub model switch, see "forceSubModel"_forceSubModel.html for details :l
+:ule
+
+[Examples:]
+
+forceModels
+(
+    ShirgaonkarIB
+);
+ShirgaonkarIBProps
+\{
+    velFieldName "U";
+    pressureFieldName "p";
+\} :pre
+
+[Description:]
+
+The force model performs the calculation of forces (e.g. fluid-particle
+interaction forces) acting on each DEM particle. The {ShirgaonkarIB} model
+calculates the drag force (viscous and pressure force) acting on each particle
+in a resolved manner (see "Shirgaonkar et al. (2009)"_#Shirgaonkar2009).
+This model is only suited for resolved CFD-DEM simulations where
+the particle is represented by immersed boundary method.
+
+[Restrictions:]
+
+Only for immersed boundary solvers.
+
+[Related commands:]
+
+"forceModel"_forceModel.html
+
+:line
+
+:link(Shirgaonkar2009)
+[(Shirgaonkar, 2009)] Shirgaonkar, A. A., MacIver, M. A. and Patankar, N. A., (2009),
+"A new mathematical formulation and fast algorithm for fully resolved simulation
+of self-propulsion", J. Comput. Phys., 228, pp. 2366-2390.
+
+

@@ -1,0 +1,60 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+momCoupleModel implicitCouple command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+momCoupleModels
+(
+    implicitCouple
+);
+implicitCoupleProps
+\{
+    velFieldName          "U";
+    granVelFieldName      "Us";
+    voidfractionFieldName "voidfraction";
+    KslLimit              scalar1;
+    minAlphaP             scalar2;
+\} :pre
+
+{U} = name of the finite volume fluid velocity field :ulb,l
+{Us} = name of the finite volume granular velocity field :l
+{voidfraction} = name of the finite volume void fraction field :l
+{scalar1} = (optional, default 1e10) limit implicit momentum exchange field :l
+{scalar2} = (optional, default SMALL) minimum value for local particle volume fraction to calculate the exchange field :l
+:ule
+
+[Examples:]
+
+momCoupleModels
+(
+    implicitCouple
+);
+implicitCoupleProps
+\{
+    velFieldName          "U";
+    granVelFieldName      "Us";
+    voidfractionFieldName "voidfraction";
+\} :pre
+
+[Description:]
+
+The {implicitCouple} model is a momCoupleModel model providing an implicit
+momentum source term for the CFD solver.
+
+[Restrictions:]
+
+Only for solvers that include implicit momentum exchange.
+
+[Related commands:]
+
+"momCoupleModel"_momCoupleModel.html
+

@@ -1,0 +1,13 @@
+fvPatchFields = fields/fvPatchFields
+derivedFvPatchFields = $(fvPatchFields)/derived
+interpolation = interpolation/interpolation
+
+general = cfdTools/general
+
+$(derivedFvPatchFields)/uniformFixedValueVoidfraction/uniformFixedValueVoidfractionFvPatchFields.C
+$(derivedFvPatchFields)/uniformFixedValueTube/uniformFixedValueTubeFvPatchFields.C
+
+$(interpolation)/interpolationCellPoint/makeInterpolationCellPoint2.C
+$(interpolation)/interpolationCellPointWallModified/makeInterpolationCellPointWallModified.C
+
+LIB = $(CFDEM_LIB_DIR)/libfiniteVolumeCFDEM

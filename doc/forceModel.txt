@@ -1,0 +1,55 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+forceModel command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+forceModels
+(
+    model_x
+    model_y
+); :pre
+
+model = name of force model to be applied :ul
+
+[Examples:]
+
+forceModels
+(
+    Archimedes
+    DiFeliceDrag
+); :pre
+
+NOTE: This examples list might not be complete - please look for other models
+(forceModel XY) in this documentation.
+
+[Description:]
+
+The force model performs the calculation of forces (e.g. fluid-particle
+interaction forces) acting on each DEM particle. All force models selected are
+executed sequentially and the forces on the particles are superposed. If the
+fluid density field is needed, by default a field named "rho" will be used. Via
+the forceSubModel an alternative field can be chosen.
+
+[Restrictions:]
+
+none
+
+[Related commands:]
+
+"Archimedes"_forceModel_Archimedes.html, "DiFeliceDrag"_forceModel_DiFeliceDrag.html,
+"gradPForce"_forceModel_gradPForce.html, "viscForce"_forceModel_viscForce.html,
+"dSauter"_forceModel_dSauter.html
+
+[Default:]
+
+none
+

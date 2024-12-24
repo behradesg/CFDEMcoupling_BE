@@ -1,0 +1,32 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+IOModel off command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+IOModel off; :pre
+
+[Examples:]
+
+IOModel off; :pre
+
+[Description:]
+
+This IOModel produces no output.
+
+[Restrictions:]
+
+none
+
+[Related commands:]
+
+"IOModel"_IOModel.html
+

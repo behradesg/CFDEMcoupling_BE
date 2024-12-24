@@ -1,0 +1,34 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+regionModel allRegion command :h3
+
+[Syntax:]
+
+NOTE: In the current CFDEMcoupling version, this model is no longer used.
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+regionModel allRegion; :pre
+
+[Examples:]
+
+regionModel allRegion; :pre
+
+[Description:]
+
+The {allRegion} model is a region model including the whole CFD region for the coupling.
+
+[Restrictions:]
+
+none
+
+[Related commands:]
+
+"regionModel"_regionModel.html
+

@@ -1,0 +1,32 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+smoothingModel off command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+smoothingModel off; :pre
+
+[Examples:]
+
+smoothingModel off; :pre
+
+[Description:]
+
+The {off} model is a dummy smoothingModel model which performs no smoothing.
+
+[Restrictions:]
+
+none
+
+[Related commands:]
+
+"smoothingModel"_smoothingModel.html
+
