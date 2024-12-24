@@ -44,12 +44,6 @@ Check if everything is set up correctly:
 cfdemSysTest
 ```
 
-Compile LIGGGHTS (as a library)
-
-```bash
-cfdemCompLIG
-```
-
 In case LIGGGHTS has already been compiled via cmake, it is possible to just compile LIGGGHTS-related sub-libraries using:
 ```bash
 cfdemCompLIGlib
@@ -86,17 +80,6 @@ ls
 
 If the file *log_compile_results_success* is present, compilation was successful.
 
-Install Octave for post-processing some of the tutorial output.
-
-```bash
-sudo apt-get install octave
-```
-
-To run all tutorial cases type in a terminal:
-
-```bash
-cfdemTestTUT
-```
 
 ## License
 
