@@ -1,0 +1,83 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+   p
+   {
+     solver GAMG;
+     smoother DIC;
+     tolerance 1e-5;
+     relTol 0.001;
+   }
+
+   pFinal
+   {
+      $p;
+      relTol 0;
+   }
+
+   "(U|k|epsilon|R|nuTilda)"
+   {
+      solver PBiCG;
+      preconditioner DILU;
+      relTol 1e-05;
+   }
+   
+   "(U|k|epsilon|R|nuTilda)Final"
+   {
+      solver PBiCG;
+      preconditioner DILU;
+      tolerance 1e-05;
+      relTol 0;
+   }
+
+   "(voidfraction|Ksl|UsNext|voidfractionNext|sSmoothField|vSmoothField|fSmooth|vSmoothGranTempField|sSmoothGranTempField|sSmoothGranTempFieldFinal)"
+   {
+      solver GAMG;
+      smoother DIC;
+      tolerance 1e-11;
+      relTol 1e-8;
+   }
+}
+
+
+PIMPLE
+{
+    momentumPredictor yes;
+    dragCouplingNew   yes;
+    nOuterCorrectors 2;
+    nCorrectors     1;
+    periodicBoxSwitch yes;
+    nNonOrthogonalCorrectors 0;
+    pRefCell        0;
+    pRefValue       0;
+}
+
+
+relaxationFactors
+{
+   fields
+   {
+	".*" 1; 
+   }
+   equations
+   {
+	"p" 0.3;
+	"U" 0.6;
+   }
+}
