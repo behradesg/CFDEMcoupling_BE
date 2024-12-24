@@ -27,13 +27,13 @@ git clone git@github.com:behradesg/CFDEMcoupling_BE.git
 Open the bashrc file of CFDEMcoupling
 
 ```bash
-gedit ~/CFDEM/CFDEMcoupling/etc/bashrc &
+gedit ~/CFDEM/CFDEMcoupling_BE/etc/bashrc &
 ```
 
 Edit the lines marked as `USER EDITABLE PART` to reflect your installation paths correctly. Save the bashrc file and reload it:
 
 ```bash
-source ~/CFDEM/CFDEMcoupling/etc/bashrc
+source ~/CFDEM/CFDEMcoupling_BE/etc/bashrc
 ```
 
 Entering $CFDEM_PROJECT_DIR in a the terminal should now give "... is a directory"
@@ -74,7 +74,7 @@ cfdemCompCFDEMuti
 Find the log files of the compile process
 
 ```bash
-cd ~/CFDEM/CFDEMcoupling/etc/log
+cd ~/CFDEM/CFDEMcoupling_BE/etc/log
 ls
 ```
 
