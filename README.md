@@ -21,7 +21,7 @@ CFDEMcoupling source from the repository:
 cd $HOME
 mkdir CFDEM
 cd CFDEM
-git clone https://github.com/ParticulateFlow/CFDEMcoupling.git
+git clone git@github.com:behradesg/CFDEMcoupling_BE.git
 ```
 
 Open the bashrc file of CFDEMcoupling
