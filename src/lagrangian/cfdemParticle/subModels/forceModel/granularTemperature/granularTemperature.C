@@ -216,7 +216,15 @@ void granularTemperature::setForce() const
     // to calculate DT_ refer to Page 34 of Capecelatro, J.S., 2014. A mesoscopic formalism for simulating
     // particle-laden flows  with applications in energy conversion processes. Cornell University.
 
-    DT_ = Foam::max(Foam::sqr(adaptiveFilterLength_) - Foam::sqr(deltaX), zeroScalar) / ((16.0*log(2.0)) * deltaT);
+    if (adaptiveFilterLength_ > deltaX)
+    {
+    	
+    	DT_ = Foam::sqr(adaptiveFilterLength_) / ((16.0*log(2.0)) * deltaT);
+    
+    } else {
+    
+       DT_ = zeroScalar / ((16.0*log(2.0)) * deltaT);
+    }
 
     // do the smoothing
     solve
