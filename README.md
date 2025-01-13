@@ -76,6 +76,9 @@ ls
 
 If the file *log_compile_results_success* is present, compilation was successful.
 
+# Simulation cases
+The simulation cases can be found in tutorials/cfdemSolverPimple/UnboundedFluidizationCases/
+
 
 ## License
 
