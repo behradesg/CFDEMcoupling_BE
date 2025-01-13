@@ -7,11 +7,7 @@ CFDEM®coupling stands for Computational Fluid Dynamics (CFD) - Discrete Element
 
 ## Disclaimer
 
-> This is an academic adaptation of the CFDEM®coupling software package, released by the
-[Department of Particulate Flow Modelling at Johannes Kepler University in Linz, Austria.](https://www.jku.at/pfm)
-> LIGGGHTS® and CFDEM® are registered trademarks, and this offering is not approved or
-endorsed by DCS Computing GmbH, the official producer of the LIGGGHTS® and CFDEM®coupling software.
-> This offering is not approved or endorsed by OpenCFD Limited, producer and distributor of the OpenFOAM software via www.openfoam.com, and owner of the OPENFOAM®  and OpenCFD®  trade marks.
+> This is an adaptation of particulate flow modelling department CFDEMcoupling. 
 
 ## installation
 Make sure OpenFOAM 6.0 is set up correctly and LIGGGHTS is installed as well. Clone the 
@@ -86,8 +82,6 @@ If the file *log_compile_results_success* is present, compilation was successful
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
 - This software is distributed under the [GNU General Public License](https://opensource.org/licenses/GPL-3.0).
-- Copyright © 2009-     JKU Linz
-- Copyright © 2012-2015 DCS Computing GmbH, Linz
 - Some parts of CFDEM®coupling are based on OpenFOAM® and Copyright on these
   parts is held by the OpenFOAM® Foundation (www.openfoam.org)
   and potentially other parties.
